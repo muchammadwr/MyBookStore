@@ -20,7 +20,6 @@ const EditBook = () => {
       .get(`http://localhost:5555/books/${id}`)
       .then((response) => {
         setAuthor(response.data.author);
-        enqueueSnackbar("Book edited successfully", { variant: "success" });
         setLoading(false);
       })
       .catch((error) => {
@@ -41,6 +40,7 @@ const EditBook = () => {
       .put(`http://localhost:5555/books/${id}`, data)
       .then(() => {
         setLoading(false);
+        enqueueSnackbar("Book edited successfully", { variant: "success" });
         navigate("/");
       })
       .catch((error) => {
